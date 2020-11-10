@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+open https://circleci.com/gh/$(git remote get-url origin | sed -e 's/https:\/\/github.com\///' -e 's/\.git//')

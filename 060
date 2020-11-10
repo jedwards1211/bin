@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -exo pipefail
+makerepo
+travis enable
+setup-semantic-release
+git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+

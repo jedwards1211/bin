@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Script to convert PDF file to JPG images
+#
+# Dependencies:
+# * ghostscript
+
+for PDF in "$@"
+do
+  echo "Processing $PDF..."
+  DIR=`basename "$PDF" .pdf`
+
+  mkdir "$DIR"
+
+  gs -dUseCropBox -dAutoRotatePages=/None -sDEVICE=gif8 -r200 -o "$DIR"/%04d.gif "$PDF"
+done

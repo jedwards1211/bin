@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+CACHE="$(dirname $0)/.cache/homepage"
+
+if [ "$#" -ne 1 ]; then
+  (cd $(npm prefix) && npm repo)
+elif [[ "$1" =~ ^[^@].+/.+ ]]; then
+  open https://github.com/$1
+else
+  if [ ! -e "$CACHE/$1" ]; then
+    mkdir -p "$CACHE"
+    npm view "$1" homepage > "$CACHE/$1"
+    echo Added "$1" to cache.
+  else
+  	echo Using cache: $(< "$CACHE/$1")
+  fi
+  open $(< "$CACHE/$1")
+fi

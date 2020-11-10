@@ -1,0 +1,15 @@
+{
+  "name": "@jedwards1211/bin",
+  "private": true,
+  "version": "1.0.0",
+  "description": "my bin scripts",
+  "repository": {
+    "type": "git",
+    "url": "https://jedwards1211/bin"
+  },
+  "author": "Andy Edwards",
+  "license": "ISC",
+  "dependencies": {
+    "npm-docs-readme": "^1.0.0"
+  }
+}

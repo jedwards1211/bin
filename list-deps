@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const packageJson = require(
+  process.argv.find((arg, index) => index >= 2 && arg[0] !== '-') ||
+  path.resolve('package.json')
+)
+
+const dev = process.argv.indexOf('--dev') >= 0 || process.argv.indexOf('-D') >= 0
+const all = process.argv.indexOf('--all') >= 0 || process.argv.indexOf('-a') >= 0
+
+const deps = all
+  ? [].concat(
+    Object.keys(packageJson.dependencies),
+    Object.keys(packageJson.devDependencies || {}),
+    Object.keys(packageJson.peerDependencies || {}),
+    Object.keys(packageJson.optionalDependencies || {})
+  )
+  : Object.keys(dev ? packageJson.devDependencies : packageJson.dependencies)
+
+deps.sort().forEach(dep => console.log(dep))

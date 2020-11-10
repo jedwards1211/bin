@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+dotnet ~/cito/bin/Debug/netcoreapp3.1/cito.dll $@
+

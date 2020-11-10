@@ -1,0 +1,2 @@
+cd ~/Desktop
+rm -rvf Screen\ Shot* *.html *_files *.js *.mov *.har *.cpuprofile *.profile
