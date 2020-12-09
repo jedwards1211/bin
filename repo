@@ -9,7 +9,7 @@ elif [[ "$1" =~ ^[^@].+/.+ ]]; then
 else
   if [ ! -e "$CACHE/$1" ]; then
     mkdir -p $(dirname "$CACHE/$1")
-    npm view "$1" repository.url | sed -Ee 's/^git\+//; s/^git:/https:/; s/\.git$//; s/^ssh:\/\/\([a-z]\+@\)\?/https:\/\//;' > "$CACHE/$1"
+    npm view "$1" repository.url | sed -Ee 's/^git\+//; s/^git:/https:/; s/\.git$//; s/^ssh:\/\/([a-z]+@)?/https:\/\//;' > "$CACHE/$1"
     echo Added "$1" to cache.
   else
   	echo Using cache: $(< "$CACHE/$1")
